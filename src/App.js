@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+//TODO SOME STUFF
+
 function DataComponent() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
