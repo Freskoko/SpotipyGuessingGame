@@ -74,55 +74,31 @@ function DataComponent({ setCorrectAmount }) {
     }
   }
 
-  return (
-    <div className="centeritems"> 
-      <button onClick={handleButtonClick} disabled={isLoading}>
-        {isLoading ? 'Loading...' : 'Get new data'}
-      </button>¨
-
-
-      <div class="sideways">
-
-          <div class="ontop">
-            
-              <div>
-
-              {song1["artist"]}
-              {song1["name"]}
-
-              </div>
-
-              
-              <button onClick={handleImageClickSong1}>
-                <img src={song1["image"]} width="212" height="700"/>
-              </button>
-              
-
-          </div>
-
-
-
-          <div class="ontop">
-            
-              <div>
-
-              {song2["artist"]}
-              {song2["name"]}
-
-              </div>
-
-          
-              <button onClick={handleImageClickSong2}>
-                <img src={song2["image"]} width="212" height="700"/>
-              </button>
-
-          </div>
-
-
+return (
+  <div className="centeritems">
+    <button onClick={handleButtonClick}>
+      {isLoading ? 'Loading...' : 'Get new data'}
+    </button>
+    {song1.length !== 0 && song2.length !== 0 ? (
+      <div className="sideways">
+        <div className="ontop">
+          <div>{song1.artist}</div>
+          <div>{song1.name}</div>
+          <button onClick={handleImageClickSong1}>
+            <img src={song1.image} width="512" height="700" />
+          </button>
+        </div>
+        <div className="ontop">
+          <div>{song2.artist}</div>
+          <div>{song2.name}</div>
+          <button onClick={handleImageClickSong2}>
+            <img src={song2.image} width="512" height="700" />
+          </button>
+        </div>
       </div>
-
-    </div>
-  );
+    ) : null}
+  </div>
+);
 }
 
 function App() {
