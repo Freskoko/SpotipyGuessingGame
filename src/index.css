@@ -17,6 +17,7 @@ code {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: rgb(230, 105, 56);
 }
 
 .sideways{
@@ -31,4 +32,10 @@ code {
   flex-direction:column;
   justify-content: center;
   align-items: center;
+}
+
+.inpbuttonimg {
+  border: none;
+  padding: 0;
+  background-color: transparent;
 }
