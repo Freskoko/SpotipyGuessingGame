@@ -4,9 +4,8 @@ function CorrectSymbol({visibility, image}) {
 
   return (
     <div>
-      {/* {visibility && <img src="checkmark.png" width="50" height="50"/>} */}
 
-      {visibility &&    <div
+      {visibility &&  <div class = "overlayimage" 
           style={{
             position: "fixed",
             top: 0,
@@ -23,7 +22,6 @@ function CorrectSymbol({visibility, image}) {
         </div>}
 
     </div>
-
   ) 
 }
 
@@ -31,9 +29,7 @@ function CorrectSymbol({visibility, image}) {
 function CorrectCounter({correctamount}){
 
   return(
-
     <h2>Score: { correctamount }</h2>
-
   )
 }
 
@@ -78,74 +74,45 @@ function DataComponent({ setCorrectAmount, setVisibility , setImage}) {
   }, []);
 
 
-  function handleImageClickSong1() {
-    // console.log("clicked1")
-    // console.log(song1["popularity"])
-    if ( song1["popularity"] >= song2["popularity"] ) {
+
+  function changeImageWithTime(image,time){
+    setImage(image)
+    setVisibility(true);
+    // Set the visibility back to true after { time } seconds
+    setTimeout(() => {
+      setVisibility(false);
+    }, time);
+
+  }
+
+
+  function HandleCorrectOrNotClick(guessed,other) {
+    console.log("guessed")
+    if (guessed["popularity"] >= other["popularity"]) {
       console.log("Correct!");
 
       setCorrectAmount(prevCount => prevCount + 1);
-
-      setImage("checkmark.png")
-
-      setVisibility(true);
-
-      // Set the visibility back to true after 3 seconds
-      setTimeout(() => {
-        setVisibility(false);
-      }, 2000);
+      changeImageWithTime("checkmark.png",1500)
 
     }
 
     else{
       setCorrectAmount(0)
-
-      setImage("redx.png")
-
-      setVisibility(true);
-
-      // Set the visibility back to true after 3 seconds
-      setTimeout(() => {
-        setVisibility(false);
-      }, 2000);
-
+      changeImageWithTime("redx.png",1500)
     }
+
     handleButtonClick()
   }
+
 
   function handleImageClickSong2() {
-    console.log("clicked2 ")
-    if (song2["popularity"] >= song1["popularity"]) {
-      console.log("Correct!");
-
-      setCorrectAmount(prevCount => prevCount + 1);
-
-      setImage("checkmark.png")
-
-      setVisibility(true);
-
-      // Set the visibility back to true after 3 seconds
-      setTimeout(() => {
-        setVisibility(false);
-      }, 2000);
-
-    }
-
-    else{
-      setCorrectAmount(0)
-
-      setImage("redx.png")
-
-      setVisibility(true);
-
-      // Set the visibility back to true after 3 seconds
-      setTimeout(() => {
-        setVisibility(false);
-      }, 2000);
-
-    }
-    handleButtonClick()
+    HandleCorrectOrNotClick(song2,song1)
   }
+
+  function handleImageClickSong1() {
+    HandleCorrectOrNotClick(song1,song2)
+  }
+
 
 return (
   <div className="centeritems">
@@ -154,25 +121,29 @@ return (
     </button>
     {song1.length !== 0 && song2.length !== 0 ? (
       <div className="sideways">
-        <div className="ontop">
-          <div>{song1.artist}</div>
-          <div>{song1.name}</div>
-          <button onClick={handleImageClickSong1} class ="inpbuttonimg">
-            <img src={song1.image} width="512" height="700" />
-          </button>
-        </div>
-        <div className="ontop">
-          <div>{song2.artist}</div>
-          <div>{song2.name}</div>
-          <button onClick={handleImageClickSong2} class ="inpbuttonimg">
-            <img src={song2.image} width="512" height="700" />
-          </button>
-        </div>
+
+        <ArtistWithImage song={song1} functionClick = {handleImageClickSong1} />
+
+        <ArtistWithImage song={song2} functionClick = {handleImageClickSong2} />
+
       </div>
     ) : null}
   </div>
 );
 }
+
+  function ArtistWithImage ({ song, functionClick }){
+
+    return (
+      <div className="ontop">
+          <div>{song.artist}</div>
+          <div>{song.name}</div>
+            <button onClick={functionClick} class ="inpbuttonimg">
+              <img src={song.image} width="512" height="700" />
+            </button>
+    </div>
+    )
+  }
 
 function App() {
   const [correctamount,setCorrectAmount] = useState(0)
@@ -193,8 +164,6 @@ function App() {
         setVisibility={setVisibility} 
         setImage ={setImage}
         />
-
-     
       
     </div>
   );
