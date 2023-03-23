@@ -136,8 +136,8 @@ return (
 
     return (
       <div className="ontop">
-          <div>{song.artist}</div>
-          <div>{song.name}</div>
+          <p>{song.name}</p>
+          <p>{song.artist}</p>
             <button onClick={functionClick} class ="inpbuttonimg">
               <img src={song.image} width="512" height="700" />
             </button>
@@ -153,7 +153,7 @@ function App() {
   return (
     <div className="centeritems">
 
-      <h1>Which song is more popular?</h1>  
+      <h2>?</h2>  
 
       <CorrectSymbol visibility={isVisible} image={image}/>
 

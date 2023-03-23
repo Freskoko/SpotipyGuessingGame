@@ -20,7 +20,7 @@ initialize()
 
 @app.route('/data')
 def data():
-    global user
+    global user 
     artist = get_random_artist()
     data = get_artist_info(user, artist)
     return jsonify(data)

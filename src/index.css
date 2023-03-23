@@ -5,6 +5,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-y: hidden;
+  background-color: rgb(230, 105, 56);
+}
+
+body, html {
+  overflow-x: hidden;
 }
 
 code {
@@ -13,25 +20,30 @@ code {
 }
 
 .centeritems {
+  padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: rgb(230, 105, 56);
+  max-width: 100%; /* Limit the width to 100% */
+  margin: 0 auto; /* Center the div */
 }
 
-.sideways{
+.sideways {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 }
 
-.ontop{
+.ontop {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .inpbuttonimg {
@@ -40,3 +52,15 @@ code {
   background-color: transparent;
 }
 
+/* Media query for smaller screens (e.g., mobile devices) */
+@media (max-width: 768px) {
+  .ontop img {
+    /* width: 80%;  */
+    max-width: 200px; /* Limit the maximum width 256*/
+    max-height: 200px;
+    min-width: 200px;
+    min-height: 200px;
+
+    /* height: auto; Maintain the aspect ratio */
+  }
+}
