@@ -28,8 +28,12 @@ code {
   align-items: center;
   margin: 0;
   padding: 0;
-  background-color: rgb(230, 105, 56);
+  background-color: rgb(62, 6, 63);
+  background-image: url('https://thumbs.gfycat.com/AdolescentArcticCatfish-size_restricted.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 
 .sideways {
   display: flex;
@@ -43,18 +47,6 @@ code {
   padding: 0;
 }
 
-.ontop {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  width: 100%;
-}
-
 .inpbuttonimg {
   border: none;
   background-color: transparent;
@@ -65,8 +57,9 @@ code {
 }
 
 .fullscreen-image{
-  width: 100%;
-  height: 100%;
+  max-width: 500px;
+  width: 90%;
+  height: 90%;
   object-fit: cover;
   position: relative;
   z-index: 1;
@@ -78,7 +71,66 @@ code {
   justify-content: center;
   align-items: center;
   height: 50vh;
+  max-width: 500px;
   width: 100%;
   margin: 0;
   padding: 0;
+}
+
+.inpbuttonimg {
+  position: relative;
+}
+
+.song-info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: 150%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+}
+
+.background {
+  background-color: rgba(220, 212, 212, 0.45);
+  padding: 15px;
+  border-radius: 5px;
+  margin: 5px;
+  /* margin-bottom: 60px; */
+  /* margin-top: 50px; */
+  display: inline-block;
+  text-align: center;
+}
+
+.background-artist {
+  background-color: rgba(220, 212, 212, 0.6);
+  padding: 15px;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 50%;
+  /* margin-bottom: 60px; */
+  /* margin-top: 50px; */
+  display: inline-block;
+  text-align: center;
+}
+
+.correct-counter, .correct-symbol {
+  position: absolute;
+  z-index: 3;
+}
+
+.correct-counter {
+  top: 109px;
+  left: 0;
+  right: 80px;
+  color: rgb(246, 240, 240)
+}
+
+.correct-symbol {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

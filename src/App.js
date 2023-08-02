@@ -5,31 +5,34 @@ function CorrectSymbol({visibility, image}) {
   return (
     <div>
 
-      {visibility &&  <div class = "overlayimage" 
+      {visibility &&  
+        <div class = "overlayimage correct-symbol" 
           style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            justifyContent: "center",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            zIndex: 9999,
-          }}
-        >
-          <img src={image} alt="overlay image" />
-        </div>}
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              display: "flex",
+              justifyContent: "center",
+              // backgroundColor: "rgba(0, 0, 0, 0.5)",
+              zIndex: 3,
+            }}>
+            <img src={image} alt="overlay image" width="300px"/>
+          </div>
+      }
 
     </div>
   ) 
 }
 
-
 function CorrectCounter({correctamount}){
-
   return(
-    <h2>Score: { correctamount }</h2>
+    <h2 class = "correct-counter" style={{
+          position: "absolute",
+          top: -20,
+          left: 30,
+          zIndex: 3,
+        }}>Score: { correctamount }</h2>
   )
 }
 
@@ -116,9 +119,9 @@ function DataComponent({ setCorrectAmount, setVisibility , setImage}) {
 
 return (
   <div className="centeritems">
-    <button onClick={handleButtonClick}>
+    {/* <button onClick={handleButtonClick}>
       {isLoading ? 'Loading...' : 'Get new data'}
-    </button>
+    </button> */}
     {song1.length !== 0 && song2.length !== 0 ? (
       <div>
   <ArtistWithImage song={song1} functionClick = {handleImageClickSong1} />
@@ -131,16 +134,23 @@ return (
 
   function ArtistWithImage ({ song, functionClick })   { 
     return (
-    <div className="ontop">
-        <button onClick={functionClick} class ="inpbuttonimg">
-            <div className="song-info">
-                <p>{song.name}</p>
-                <p>{song.artist}</p>
+      <div className="ontop">
+          <button onClick={functionClick} className="inpbuttonimg">
+                      
+              <div className="song-info">
+                <div className="background">
+                  <p>{song.name}</p>
+                </div>
+                <div className="background-artist">
+                  <p>{song.artist}</p>
+                </div>
             </div>
-            <img src={song.image}  className = "fullscreen-image"/> 
-        </button>
-    </div>
-  );
+
+            <img src={song.image} className="fullscreen-image" alt="Song album cover"
+             onError={event => event.target.src = '/public/musicsymbol.png'} />
+          </button>
+      </div>
+    );
   }
 
 function App() {
@@ -151,9 +161,13 @@ function App() {
   return (
     <div className="centeritems">
 
-      <CorrectSymbol visibility={isVisible} image={image}/>
+      <div className='ontop'>
 
-      <CorrectCounter correctamount={correctamount}/>
+        <CorrectSymbol visibility={isVisible} image={image}/>
+
+        <CorrectCounter correctamount={correctamount}/>
+
+      </div>
 
       <DataComponent 
         setCorrectAmount={setCorrectAmount} 
