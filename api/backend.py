@@ -22,7 +22,6 @@ def get_artist_info(user,artist_name):
     if len(items) > 0:
         
         artist = items[0]
-
         
         trackinfo = (user.artist_top_tracks(artist["uri"],country = "NO"))
 

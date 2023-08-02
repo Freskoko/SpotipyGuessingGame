@@ -120,29 +120,27 @@ return (
       {isLoading ? 'Loading...' : 'Get new data'}
     </button>
     {song1.length !== 0 && song2.length !== 0 ? (
-      <div className="sideways">
-
-        <ArtistWithImage song={song1} functionClick = {handleImageClickSong1} />
-
-        <ArtistWithImage song={song2} functionClick = {handleImageClickSong2} />
-
-      </div>
+      <div>
+  <ArtistWithImage song={song1} functionClick = {handleImageClickSong1} />
+  <ArtistWithImage song={song2} functionClick = {handleImageClickSong2} />
+  </div>
     ) : null}
   </div>
 );
 }
 
-  function ArtistWithImage ({ song, functionClick }){
-
+  function ArtistWithImage ({ song, functionClick })   { 
     return (
-      <div className="ontop">
-          <p>{song.name}</p>
-          <p>{song.artist}</p>
-            <button onClick={functionClick} class ="inpbuttonimg">
-              <img src={song.image} width="512" height="700" />
-            </button>
+    <div className="ontop">
+        <button onClick={functionClick} class ="inpbuttonimg">
+            <div className="song-info">
+                <p>{song.name}</p>
+                <p>{song.artist}</p>
+            </div>
+            <img src={song.image}  className = "fullscreen-image"/> 
+        </button>
     </div>
-    )
+  );
   }
 
 function App() {
@@ -152,8 +150,6 @@ function App() {
 
   return (
     <div className="centeritems">
-
-      <h2>?</h2>  
 
       <CorrectSymbol visibility={isVisible} image={image}/>
 

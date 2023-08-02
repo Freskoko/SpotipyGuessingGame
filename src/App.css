@@ -46,3 +46,11 @@ body {
 .inpbuttonimg{
   border: none;
 }
+
+.fullscreen-image{
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* this line make sure the whole image is shown, 
+                          it might result in some parts of the image being trimmed though */
+}
+
