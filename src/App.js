@@ -38,7 +38,7 @@ function DataComponent({ setCorrectAmount, setVisibility , setImage}) {
   const [song1, setSong1] = useState([]);
   const [song2, setSong2] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
+ 
   function GrabData(){
     setIsLoading(true);
     return fetch('http://localhost:5000/data')
